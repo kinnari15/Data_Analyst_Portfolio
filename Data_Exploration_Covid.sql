@@ -1,13 +1,16 @@
 SELECT *
 FROM [portfolio project].dbo.CovidDeaths$
+where continent is not null
 order by 3,4
 
 --SELECT *
 --FROM [portfolio project].dbo.CovidVaccinations$
+--where continent is not null
 --order by 3,4
 
 SELECT Location, date, total_cases, new_cases, total_deaths, population
 FROM [portfolio project].dbo.CovidDeaths$
+where continent is not null
 order by 1,2
 
 --Shows likelihood of dying if you contract Covid in India
@@ -23,8 +26,25 @@ FROM [portfolio project].dbo.CovidDeaths$
 order by 1,2
 
 --Looking at countries with highest infection rate compared to population
-SELECT Location, date, Max(total_cases) as HighestInfectionCount, Population, Max(total_deaths/total_cases) * 100 as CovidPercentage
+SELECT Location, population, Max(total_cases) as HighestInfectionCount, Max(total_cases/population) * 100 as CovidPercentage
 FROM [portfolio project].dbo.CovidDeaths$
 --WHERE location like '%india%'
 group by Location, Population
 order by CovidPercentage desc
+
+--Showing the countries with highest death count per population
+SELECT Location, Max(cast(total_deaths as int)) as TotalDeathCount
+FROM [portfolio project].dbo.CovidDeaths$
+--WHERE location like '%india%'
+where continent is not null
+group by Location
+order by TotalDeathCount desc
+
+--Continentwise
+SELECT location, Max(cast(total_deaths as int)) as TotalDeathCount
+FROM [portfolio project].dbo.CovidDeaths$
+--WHERE location like '%india%'
+where continent is null
+group by location
+order by TotalDeathCount desc
+
