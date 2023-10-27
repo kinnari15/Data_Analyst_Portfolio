@@ -2,7 +2,7 @@
 
 SELECT *
 FROM portfolioproject..ElectricVehicleData
---ORDER BY [Model Year] ASC
+ORDER BY [Model Year] ASC
 
 --Selecting cars where model is a ranger
 
@@ -32,5 +32,16 @@ SET [Clean Alternative Fuel Vehicle (CAFV) Eligibility] = CASE WHEN [Clean Alter
 		ELSE  [Clean Alternative Fuel Vehicle (CAFV) Eligibility] 
 		END 
 
+--Counting number of Teslas
 
+SELECT COUNT(Make)
+FROM portfolioproject..ElectricVehicleData
+WHERE Make = 'Tesla' 
+
+
+--County = King
+
+SELECT County, City, Make, Model
+FROM portfolioproject..ElectricVehicleData
+WHERE County LIKE '%King%'
 
