@@ -1,0 +1,10 @@
+PROJECT
+
+Retail Stores
+
+Excel - No duplicates found in any of the sheets, no null values present, Splited the store_type column using a delimiter in dim_stores.csv. Date in fact_sales_normalized.csv was changed to general short date format. Did ETL transformation likes joined the full name in a single column. Created a data dictionary which will be helpful for the analysis in the STAR schema.
+
+SQL - Converted to a normal date format in fact_Sales_normalised.csv, Finding customers who are online shoppers and spend above 1000 dollars, Finding products in the electronics category bought by customers using multiple joins across tables, Count of Products bought from Puma, Found the max amount and avg amount spent by customers who were premium/luxury shoppers
+
+Powerbi - 
+
